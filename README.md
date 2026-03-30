@@ -1,75 +1,54 @@
-# React + TypeScript + Vite
+# Lời Nhắn Nhỏ Store 💌
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A handmade keychain order form web app built for a small Vietnamese gift shop. Customers can browse the collection and place orders directly through a Google Form integration.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Product gallery with customizable image/emoji slots
+- Order form with Vietnamese phone number validation
+- Google Forms backend (no server required)
+- Toast notifications for submission feedback
+- Responsive design with Tailwind CSS v4
+- Deployed to GitHub Pages
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- **React 19** with React Compiler enabled
+- **TypeScript**
+- **Vite 8**
+- **Tailwind CSS v4** (via `@tailwindcss/vite`)
+- **gh-pages** for deployment
 
-Note: This will impact Vite dev & build performances.
+## Getting Started
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+yarn install
+yarn dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Deployment
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+yarn deploy
 ```
+
+Deploys the `dist/` folder to GitHub Pages via the `gh-pages` package.
+
+## Customization
+
+### Gallery Images
+
+Edit the `GALLERY_IMAGES` array at the top of [src/App.tsx](src/App.tsx):
+
+```ts
+const GALLERY_IMAGES = [
+  { src: '/path/to/image.jpg', emoji: '🌸', alt: 'Description' },
+  { emoji: '🐰', alt: 'Placeholder (no src)' },
+];
+```
+
+When `src` is provided, the image is rendered. Otherwise the emoji is shown as a placeholder.
+
+### Google Form
+
+Update `GOOGLE_FORM_URL` and `FORM_ENTRIES` in [src/App.tsx](src/App.tsx) with your own Google Form ID and entry IDs.
