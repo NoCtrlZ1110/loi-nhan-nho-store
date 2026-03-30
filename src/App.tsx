@@ -526,6 +526,77 @@ export default function App() {
         <p className='font-bold text-sm' style={{ color: '#ad1457' }}>
           Cảm ơn bạn đã ghé thăm! Hẹn gặp lại nhé 💕
         </p>
+
+        {/* Social icons */}
+        <div className='flex justify-center gap-4 mt-4 mb-3'>
+          {/* Facebook */}
+          <a
+            href='https://www.facebook.com/profile.php?id=61578087008073'
+            target='_blank'
+            rel='noopener noreferrer'
+            aria-label='Facebook'
+            className='transition-transform hover:scale-110 active:scale-95'
+          >
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              width='32'
+              height='32'
+              viewBox='0 0 24 24'
+              fill='#1877F2'
+            >
+              <path d='M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z' />
+            </svg>
+          </a>
+
+          {/* TikTok */}
+          <a
+            href='https://www.tiktok.com/@loi.nhan.nho.store'
+            target='_blank'
+            rel='noopener noreferrer'
+            aria-label='TikTok'
+            className='transition-transform hover:scale-110 active:scale-95'
+          >
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              width='32'
+              height='32'
+              viewBox='0 0 24 24'
+              fill='#010101'
+            >
+              <path d='M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.79 1.52V6.76a4.85 4.85 0 0 1-1.02-.07z' />
+            </svg>
+          </a>
+
+          {/* Instagram (TBD – placeholder link) */}
+          <a
+            href='#'
+            aria-label='Instagram (sắp ra mắt)'
+            className='transition-transform hover:scale-110 active:scale-95 opacity-40 cursor-not-allowed'
+            onClick={(e) => e.preventDefault()}
+          >
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              width='32'
+              height='32'
+              viewBox='0 0 24 24'
+            >
+              <defs>
+                <linearGradient id='ig-grad' x1='0%' y1='100%' x2='100%' y2='0%'>
+                  <stop offset='0%' stopColor='#f09433' />
+                  <stop offset='25%' stopColor='#e6683c' />
+                  <stop offset='50%' stopColor='#dc2743' />
+                  <stop offset='75%' stopColor='#cc2366' />
+                  <stop offset='100%' stopColor='#bc1888' />
+                </linearGradient>
+              </defs>
+              <path
+                fill='url(#ig-grad)'
+                d='M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.31.975.975 1.247 2.242 1.31 3.608.058 1.265.069 1.645.069 4.849s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.31 3.608-.975.975-2.242 1.247-3.608 1.31-1.265.058-1.645.069-4.849.069s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.31-.975-.975-1.247-2.242-1.31-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.31-3.608.975-.975 2.242-1.247 3.608-1.31C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072 5.197.157 3.355.673 2.014 2.014.673 3.355.157 5.197.072 7.053.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.085 1.856.601 3.698 1.942 5.038 1.341 1.341 3.183 1.857 5.038 1.942C8.333 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.856-.085 3.698-.601 5.038-1.942 1.341-1.34 1.857-3.182 1.942-5.038C23.986 15.668 24 15.259 24 12s-.014-3.667-.072-4.947c-.085-1.856-.601-3.698-1.942-5.038C20.646.673 18.804.157 16.948.072 15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z'
+              />
+            </svg>
+          </a>
+        </div>
+
         <p className='text-xs mt-1' style={{ color: '#f06292' }}>
           © {new Date().getFullYear()} Lời Nhắn Nhỏ Store — Made with love ✨
         </p>
