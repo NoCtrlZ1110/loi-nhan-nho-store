@@ -1,5 +1,18 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import './index.css';
+
+// ── Shopee products ─────────────────────────────────────────────────────────
+const PRODUCTS: { name: string; link: string }[] = [
+  {
+    name: 'MÓC KHOÁ LỜI NHẴN HANDMADE',
+    link: 'https://s.shopee.vn/3B3GMOvO0f',
+  },
+  {
+    name: 'LÒ NƯỚNG Xinh Mình Dùng',
+    link: 'https://s.shopee.vn/Lj4zWtMKM',
+  },
+];
+// ────────────────────────────────────────────────────────────────────────────
 
 // ── Update gallery images here ──────────────────────────────────────────────
 // Each item can be a URL string or an emoji (shown as placeholder when no URL)
@@ -43,6 +56,59 @@ interface FormData {
   address: string;
   phone: string;
   note: string;
+}
+
+function ProductCard({ name, link }: { name: string; link: string }) {
+  const [imgSrc, setImgSrc] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(link)}`)
+      .then((res) => res.json())
+      .then((data: { contents?: string }) => {
+        const html = data.contents ?? '';
+        const match =
+          html.match(
+            /<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i,
+          ) ??
+          html.match(
+            /<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:image["']/i,
+          );
+        if (match?.[1]) setImgSrc(match[1]);
+      })
+      .catch(() => {});
+  }, [link]);
+
+  return (
+    <a
+      href={link}
+      target='_blank'
+      rel='noopener noreferrer'
+      className='flex items-center rounded-2xl overflow-hidden border-2 border-dashed hover:shadow-lg transition-all active:scale-[0.98]'
+      style={{ borderColor: '#f06292', background: 'white' }}
+    >
+      <div
+        className='w-36 h-28 flex-shrink-0 flex items-center justify-center overflow-hidden'
+        style={{ background: '#fce4ec' }}
+      >
+        {imgSrc ? (
+          <img src={imgSrc} alt={name} className='w-full h-full object-cover' />
+        ) : (
+          <span className='text-4xl'>🛍️</span>
+        )}
+      </div>
+      <div className='flex-1 px-4'>
+        <p
+          className='font-extrabold text-sm uppercase leading-snug'
+          style={{ color: '#ad1457' }}
+        >
+          {name}
+        </p>
+        <p className='text-xs mt-2 font-semibold' style={{ color: '#f06292' }}>
+          🛒 Xem trên Shopee
+        </p>
+      </div>
+    </a>
+  );
 }
 
 export default function App() {
@@ -213,6 +279,31 @@ export default function App() {
           </div>
         </div>
       </header>
+
+      <div className='section-divider' />
+
+      {/* ── PRODUCTS ── */}
+      <section className='py-10 px-4'>
+        <div className='max-w-lg mx-auto'>
+          <div className='text-center mb-6'>
+            <div className='text-3xl mb-2'>🛒</div>
+            <h2
+              className='font-cursive text-3xl mb-2'
+              style={{ color: '#e91e63' }}
+            >
+              Sản Phẩm
+            </h2>
+            <p className='text-sm font-medium' style={{ color: '#ad1457' }}>
+              Mọi người đặt móc khoá ở dưới đây nha ạ 😘
+            </p>
+          </div>
+          <div className='flex flex-col gap-4'>
+            {PRODUCTS.map((p) => (
+              <ProductCard key={p.link} name={p.name} link={p.link} />
+            ))}
+          </div>
+        </div>
+      </section>
 
       <div className='section-divider' />
 
