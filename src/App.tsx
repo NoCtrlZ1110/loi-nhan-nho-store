@@ -242,10 +242,10 @@ export default function App() {
             nghĩa, giá siêu yêu!
           </p>
           <a
-            href='#order-form'
+            href='#products'
             className='flex flex-wrap gap-3 justify-center mb-6 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer'
           >
-            <span className='price-tag text-lg'>Chỉ từ 25K - 50K VNĐ</span>
+            <span className='price-tag text-lg'>Đặt hàng ngay</span>
           </a>
           <div
             className='flex flex-wrap gap-2 justify-center text-sm font-semibold'
@@ -267,7 +267,7 @@ export default function App() {
       <div className='section-divider' />
 
       {/* ── PRODUCTS ── */}
-      <section className='py-10 px-4'>
+      <section id='products' className='py-10 px-4'>
         <div className='max-w-lg mx-auto'>
           <div className='text-center mb-6'>
             <div className='text-3xl mb-2'>🛒</div>
@@ -402,7 +402,7 @@ export default function App() {
       <div className='section-divider' />
 
       {/* ── ORDER FORM ── */}
-      <section id='order-form' className='py-14 px-4'>
+      <section id='order-form' className='py-14 px-4 hidden'>
         <div className='max-w-lg mx-auto'>
           <div className='text-center mb-8'>
             <div className='text-3xl mb-2'>📝</div>
