@@ -169,6 +169,7 @@ export default function App() {
           'linear-gradient(180deg, #fff0f5 0%, #ffffff 30%, #fff5f8 60%, #fce4ec 100%)',
       }}
     >
+    <div className='mx-auto w-full' style={{ maxWidth: 640 }}>
       {/* Toast container */}
       <div className='toast-container'>
         {toasts.map((t) => (
@@ -179,7 +180,7 @@ export default function App() {
       </div>
 
       {/* ── HERO ── */}
-      <header className='relative overflow-hidden text-center' style={{ minHeight: '100svh' }}>
+      <header className='relative overflow-hidden text-center' style={{ height: '100svh' }}>
         <img
           src='/cover.jpg'
           alt='Hương Loan - Lời Nhắn Nhỏ Store'
@@ -189,7 +190,7 @@ export default function App() {
           className='absolute inset-0'
           style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.35) 100%)' }}
         />
-        <div className='relative z-10 flex flex-col items-center justify-center h-full min-h-[100svh] px-4 anim-fade'>
+        <div className='relative z-10 flex flex-col items-center justify-center h-full px-4 anim-fade'>
           <h1
             className='font-cursive text-4xl md:text-6xl drop-shadow-lg'
             style={{ color: '#ffffff', textShadow: '0 2px 16px rgba(233,30,99,0.5), 0 1px 4px rgba(0,0,0,0.5)' }}
@@ -540,6 +541,7 @@ export default function App() {
           © {new Date().getFullYear()} Lời Nhắn Nhỏ Store — Made with love ✨
         </p>
       </footer>
+    </div>
     </div>
   );
 }
