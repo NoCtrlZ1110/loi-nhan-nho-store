@@ -175,7 +175,7 @@ export default function App() {
       }}
     >
       <div
-        className='mx-auto w-full flex flex-col h-full lg:p-4 lg:rounded-lg lg:border-2 lg:border-dashed lg:border-gray-300'
+        className='mx-auto w-full flex flex-col h-full lg:p-4 lg:rounded-xl lg:border-2 lg:border-dashed lg:border-gray-300'
         style={{ maxWidth: 640 }}
       >
         {/* Toast container */}
@@ -188,7 +188,7 @@ export default function App() {
         </div>
 
         {/* ── HERO ── */}
-        <header className='relative overflow-hidden text-center lg:rounded-lg'>
+        <header className='relative overflow-hidden text-center lg:rounded-t-lg'>
           <div>
             <img
               src='/cover.jpg'
@@ -232,13 +232,6 @@ export default function App() {
         <section id='products' className='py-10 px-4'>
           <div className='max-w-lg mx-auto'>
             <div className='text-center mb-6'>
-              <div className='text-3xl mb-2'>🛒</div>
-              <h2
-                className='font-cursive text-3xl mb-2'
-                style={{ color: '#e91e63' }}
-              >
-                Sản Phẩm
-              </h2>
               <p className='text-sm font-medium' style={{ color: '#ad1457' }}>
                 Mọi người đặt móc khoá ở dưới đây nha ạ 😘
               </p>
