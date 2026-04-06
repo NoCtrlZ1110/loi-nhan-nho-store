@@ -16,18 +16,6 @@ const PRODUCTS: { name: string; link: string; img: string }[] = [
 ];
 // ────────────────────────────────────────────────────────────────────────────
 
-// ── Update gallery images here ──────────────────────────────────────────────
-// Each item can be a URL string or an emoji (shown as placeholder when no URL)
-const GALLERY_IMAGES: { src?: string; emoji: string; alt: string }[] = [
-  { emoji: '🌸', alt: 'Hoa anh đào' },
-  { emoji: '🐰', alt: 'Thỏ cute' },
-  { emoji: '🦋', alt: 'Bướm xinh' },
-  { emoji: '🌈', alt: 'Cầu vồng' },
-  { emoji: '🍓', alt: 'Dâu tây' },
-  { emoji: '💖', alt: 'Trái tim' },
-];
-// ────────────────────────────────────────────────────────────────────────────
-
 // Google Form configuration
 // Replace FORM_ID with your actual Google Form ID
 // Replace each ENTRY_ID with the actual entry IDs from your Google Form
@@ -191,76 +179,23 @@ export default function App() {
       </div>
 
       {/* ── HERO ── */}
-      <header className='relative overflow-hidden py-16 px-4 text-center'>
-        <div
-          className='blob'
-          style={{
-            width: 300,
-            height: 300,
-            background: '#f48fb1',
-            top: -50,
-            left: -80,
-          }}
+      <header className='relative overflow-hidden text-center' style={{ minHeight: '100svh' }}>
+        <img
+          src='/cover.jpg'
+          alt='Hương Loan - Lời Nhắn Nhỏ Store'
+          className='absolute inset-0 w-full h-full object-cover object-center'
         />
         <div
-          className='blob'
-          style={{
-            width: 250,
-            height: 250,
-            background: '#ce93d8',
-            top: 40,
-            right: -60,
-          }}
+          className='absolute inset-0'
+          style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.35) 100%)' }}
         />
-        <div
-          className='blob'
-          style={{
-            width: 200,
-            height: 200,
-            background: '#ffcc80',
-            bottom: -40,
-            left: '40%',
-          }}
-        />
-
-        <div className='relative z-10 max-w-2xl mx-auto anim-fade'>
-          <div className='text-5xl mb-4 anim-float'>💌✨🍀</div>
+        <div className='relative z-10 flex flex-col items-center justify-center h-full min-h-[100svh] px-4 anim-fade'>
           <h1
-            className='font-cursive text-4xl md:text-5xl mb-3'
-            style={{ color: '#e91e63' }}
+            className='font-cursive text-4xl md:text-6xl drop-shadow-lg'
+            style={{ color: '#ffffff', textShadow: '0 2px 16px rgba(233,30,99,0.5), 0 1px 4px rgba(0,0,0,0.5)' }}
           >
-            Lời Nhắn Nhỏ Store
+            Hương Loan - Lời Nhắn Nhỏ Store
           </h1>
-          <p
-            className='text-xl md:text-2xl font-bold mb-3'
-            style={{ color: '#ad1457' }}
-          >
-            Có những điều khó nói thành lời, để mình giúp bạn gửi đi 💌🍀
-          </p>
-          <p className='text-base md:text-lg mb-6' style={{ color: '#6a1b3a' }}>
-            Được làm thủ công với tình yêu, dành riêng cho bạn. Quà tặng ý
-            nghĩa, giá siêu yêu!
-          </p>
-          <a
-            href='#products'
-            className='flex flex-wrap gap-3 justify-center mb-6 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer'
-          >
-            <span className='price-tag text-lg'>Đặt hàng ngay</span>
-          </a>
-          <div
-            className='flex flex-wrap gap-2 justify-center text-sm font-semibold'
-            style={{ color: '#e91e63' }}
-          >
-            <span className='bg-white/70 backdrop-blur px-4 py-2 rounded-full shadow-sm'>
-              🎨 Tuỳ chỉnh nội dung
-            </span>
-            <span className='bg-white/70 backdrop-blur px-4 py-2 rounded-full shadow-sm'>
-              💝 Làm thủ công
-            </span>
-            <span className='bg-white/70 backdrop-blur px-4 py-2 rounded-full shadow-sm'>
-              🚀 Giao hàng nhanh
-            </span>
-          </div>
         </div>
       </header>
 
@@ -289,115 +224,6 @@ export default function App() {
         </div>
       </section>
 
-      <div className='section-divider' />
-
-      {/* ── GALLERY ── */}
-      <section className='py-14 px-4'>
-        <div className='max-w-4xl mx-auto text-center'>
-          <div className='text-3xl mb-2'>🖼️</div>
-          <h2
-            className='font-cursive text-3xl mb-2'
-            style={{ color: '#e91e63' }}
-          >
-            Bộ Sưu Tập
-          </h2>
-          <p className='mb-8 font-medium' style={{ color: '#ad1457' }}>
-            Những mẫu móc khóa xinh xắn đang chờ bạn ✨
-          </p>
-          <div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
-            {GALLERY_IMAGES.map((item, i) => (
-              <div
-                key={i}
-                className='gallery-placeholder anim-fade'
-                style={{ animationDelay: `${(i + 1) * 0.1}s` }}
-              >
-                {item.src ? (
-                  <img
-                    src={item.src}
-                    alt={item.alt}
-                    className='w-full h-full object-cover rounded-2xl'
-                  />
-                ) : (
-                  item.emoji
-                )}
-              </div>
-            ))}
-          </div>
-          <p className='mt-4 text-sm font-medium' style={{ color: '#f06292' }}>
-            📸 Hình ảnh sẽ được cập nhật sớm nhất!
-          </p>
-        </div>
-      </section>
-
-      <div className='section-divider' />
-
-      {/* ── TESTIMONIALS ── */}
-      <section
-        className='py-14 px-4'
-        style={{
-          background:
-            'linear-gradient(180deg, transparent, #fce4ec30, transparent)',
-        }}
-      >
-        <div className='max-w-4xl mx-auto text-center'>
-          <div className='text-3xl mb-2'>💬</div>
-          <h2
-            className='font-cursive text-3xl mb-8'
-            style={{ color: '#e91e63' }}
-          >
-            Khách Hàng Nói Gì?
-          </h2>
-          <div className='grid md:grid-cols-3 gap-5'>
-            {[
-              {
-                emoji: '🥰',
-                name: 'Linh Nguyễn',
-                delay: '0.1s',
-                text: '"Móc khóa xinh quá luôn! Mình đặt cho cả nhóm bạn, ai cũng thích. Chất lượng tuyệt vời!"',
-              },
-              {
-                emoji: '😍',
-                name: 'Minh Anh',
-                delay: '0.2s',
-                text: '"Giao hàng nhanh, đóng gói dễ thương. Móc khóa làm quà Valentine hoàn hảo! 💕"',
-              },
-              {
-                emoji: '🤩',
-                name: 'Hải Đăng',
-                delay: '0.3s',
-                text: '"Giá rẻ mà chất lượng. Mình đã đặt lại lần 3 rồi. Shop tư vấn nhiệt tình lắm!"',
-              },
-            ].map((r) => (
-              <div
-                key={r.name}
-                className='testimonial-card bg-white rounded-2xl p-6 shadow-md text-left anim-slide'
-                style={{ animationDelay: r.delay }}
-              >
-                <div className='flex items-center gap-2 mb-3'>
-                  <div
-                    className='w-10 h-10 rounded-full flex items-center justify-center text-lg'
-                    style={{ background: '#fce4ec' }}
-                  >
-                    {r.emoji}
-                  </div>
-                  <div>
-                    <p
-                      className='font-bold text-sm'
-                      style={{ color: '#ad1457' }}
-                    >
-                      {r.name}
-                    </p>
-                    <div style={{ color: '#f06292' }}>⭐⭐⭐⭐⭐</div>
-                  </div>
-                </div>
-                <p className='text-sm' style={{ color: '#6a1b3a' }}>
-                  {r.text}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <div className='section-divider' />
 
