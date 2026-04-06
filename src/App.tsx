@@ -180,19 +180,19 @@ export default function App() {
       </div>
 
       {/* ── HERO ── */}
-      <header className='relative overflow-hidden text-center' style={{ height: '100svh' }}>
+      <header className='relative overflow-hidden text-center'>
         <img
-          src='/cover.jpg'
+          src='/cover.jpeg'
           alt='Hương Loan - Lời Nhắn Nhỏ Store'
-          className='absolute inset-0 w-full h-full object-cover object-center'
+          className='w-full block'
         />
         <div
           className='absolute inset-0'
-          style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.35) 100%)' }}
+          style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.3) 100%)' }}
         />
-        <div className='relative z-10 flex flex-col items-center justify-center h-full px-4 anim-fade'>
+        <div className='absolute inset-0 flex flex-col items-center justify-end pb-8 px-4 anim-fade'>
           <h1
-            className='font-cursive text-4xl md:text-6xl drop-shadow-lg'
+            className='font-cursive text-4xl drop-shadow-lg'
             style={{ color: '#ffffff', textShadow: '0 2px 16px rgba(233,30,99,0.5), 0 1px 4px rgba(0,0,0,0.5)' }}
           >
             Hương Loan - Lời Nhắn Nhỏ Store
