@@ -5,21 +5,7 @@ import InstagramIcon from './icons/InstagramIcon';
 import ShopeeIcon from './icons/ShopeeIcon';
 import ThreadsIcon from './icons/ThreadsIcon';
 import TikTokIcon from './icons/TikTokIcon';
-
-// ── Shopee products ─────────────────────────────────────────────────────────
-const PRODUCTS: { name: string; link: string; img: string }[] = [
-  {
-    name: 'MÓC KHOÁ LỜI NHẴN HANDMADE',
-    link: 'https://s.shopee.vn/3B3GMOvO0f',
-    img: 'https://down-vn.img.susercontent.com/file/vn-11134207-81ztc-mmozw47gjzt1cd@resize_w450_nl.webp',
-  },
-  {
-    name: 'LÒ NƯỚNG Xinh Mình Dùng',
-    link: 'https://s.shopee.vn/Lj4zWtMKM',
-    img: 'https://down-vn.img.susercontent.com/file/vn-11134207-820l4-mivdthrk9khz73@resize_w450_nl.webp',
-  },
-];
-// ────────────────────────────────────────────────────────────────────────────
+import { useGoogleSheetProducts } from './hooks/useGoogleSheetProducts';
 
 // Google Form configuration
 // Replace FORM_ID with your actual Google Form ID
@@ -101,6 +87,7 @@ export default function App() {
     note: '',
   });
   const toastIdRef = useRef(0);
+  const { products, loading } = useGoogleSheetProducts();
 
   function showToast(message: string, type: 'success' | 'error') {
     const id = ++toastIdRef.current;
@@ -237,7 +224,7 @@ export default function App() {
               </p>
             </div>
             <div className='flex flex-col gap-4'>
-              {PRODUCTS.map((p) => (
+              {products.map((p) => (
                 <ProductCard
                   key={p.link}
                   name={p.name}
@@ -258,6 +245,27 @@ export default function App() {
                 }}
               >
                 Xem tất cả sản phẩm
+                {loading && (
+                  <svg
+                    className='animate-spin w-4 h-4'
+                    viewBox='0 0 24 24'
+                    fill='none'
+                  >
+                    <circle
+                      className='opacity-25'
+                      cx='12'
+                      cy='12'
+                      r='10'
+                      stroke='currentColor'
+                      strokeWidth='4'
+                    />
+                    <path
+                      className='opacity-75'
+                      fill='currentColor'
+                      d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
+                    />
+                  </svg>
+                )}
               </a>
             </div>
           </div>
