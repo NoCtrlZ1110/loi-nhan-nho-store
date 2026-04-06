@@ -1,6 +1,21 @@
 import { useState, useRef } from 'react';
 import './index.css';
 
+// ── Shopee products ─────────────────────────────────────────────────────────
+const PRODUCTS: { name: string; link: string; img: string }[] = [
+  {
+    name: 'MÓC KHOÁ LỜI NHẴN HANDMADE',
+    link: 'https://s.shopee.vn/3B3GMOvO0f',
+    img: 'https://down-vn.img.susercontent.com/file/vn-11134207-81ztc-mmozw47gjzt1cd@resize_w450_nl.webp',
+  },
+  {
+    name: 'LÒ NƯỚNG Xinh Mình Dùng',
+    link: 'https://s.shopee.vn/Lj4zWtMKM',
+    img: 'https://down-vn.img.susercontent.com/file/vn-11134207-820l4-mivdthrk9khz73@resize_w450_nl.webp',
+  },
+];
+// ────────────────────────────────────────────────────────────────────────────
+
 // ── Update gallery images here ──────────────────────────────────────────────
 // Each item can be a URL string or an emoji (shown as placeholder when no URL)
 const GALLERY_IMAGES: { src?: string; emoji: string; alt: string }[] = [
@@ -43,6 +58,41 @@ interface FormData {
   address: string;
   phone: string;
   note: string;
+}
+
+function ProductCard({
+  name,
+  link,
+  img,
+}: {
+  name: string;
+  link: string;
+  img: string;
+}) {
+  return (
+    <a
+      href={link}
+      target='_blank'
+      rel='noopener noreferrer'
+      className='flex items-center rounded-2xl overflow-hidden border-2 border-dashed hover:shadow-lg transition-all active:scale-[0.98]'
+      style={{ borderColor: '#f06292', background: 'white' }}
+    >
+      <div className='w-36 h-28 flex-shrink-0 overflow-hidden'>
+        <img src={img} alt={name} className='w-full h-full object-cover' />
+      </div>
+      <div className='flex-1 px-4'>
+        <p
+          className='font-extrabold text-sm uppercase leading-snug'
+          style={{ color: '#ad1457' }}
+        >
+          {name}
+        </p>
+        <p className='text-xs mt-2 font-semibold' style={{ color: '#f06292' }}>
+          🛒 Xem trên Shopee
+        </p>
+      </div>
+    </a>
+  );
 }
 
 export default function App() {
@@ -192,10 +242,10 @@ export default function App() {
             nghĩa, giá siêu yêu!
           </p>
           <a
-            href='#order-form'
+            href='#products'
             className='flex flex-wrap gap-3 justify-center mb-6 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer'
           >
-            <span className='price-tag text-lg'>Chỉ từ 25K - 50K VNĐ</span>
+            <span className='price-tag text-lg'>Đặt hàng ngay</span>
           </a>
           <div
             className='flex flex-wrap gap-2 justify-center text-sm font-semibold'
@@ -213,6 +263,31 @@ export default function App() {
           </div>
         </div>
       </header>
+
+      <div className='section-divider' />
+
+      {/* ── PRODUCTS ── */}
+      <section id='products' className='py-10 px-4'>
+        <div className='max-w-lg mx-auto'>
+          <div className='text-center mb-6'>
+            <div className='text-3xl mb-2'>🛒</div>
+            <h2
+              className='font-cursive text-3xl mb-2'
+              style={{ color: '#e91e63' }}
+            >
+              Sản Phẩm
+            </h2>
+            <p className='text-sm font-medium' style={{ color: '#ad1457' }}>
+              Mọi người đặt móc khoá ở dưới đây nha ạ 😘
+            </p>
+          </div>
+          <div className='flex flex-col gap-4'>
+            {PRODUCTS.map((p) => (
+              <ProductCard key={p.link} name={p.name} link={p.link} img={p.img} />
+            ))}
+          </div>
+        </div>
+      </section>
 
       <div className='section-divider' />
 
@@ -327,7 +402,7 @@ export default function App() {
       <div className='section-divider' />
 
       {/* ── ORDER FORM ── */}
-      <section id='order-form' className='py-14 px-4'>
+      <section id='order-form' className='py-14 px-4 hidden'>
         <div className='max-w-lg mx-auto'>
           <div className='text-center mb-8'>
             <div className='text-3xl mb-2'>📝</div>
@@ -564,6 +639,44 @@ export default function App() {
               fill='#010101'
             >
               <path d='M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.79 1.52V6.76a4.85 4.85 0 0 1-1.02-.07z' />
+            </svg>
+          </a>
+
+          {/* Shopee */}
+          <a
+            href='https://s.shopee.vn/4VYdz2wpeR'
+            target='_blank'
+            rel='noopener noreferrer'
+            aria-label='Shopee'
+            className='transition-transform hover:scale-110 active:scale-95'
+          >
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              width='32'
+              height='32'
+              viewBox='0 0 24 24'
+              fill='#EE4D2D'
+            >
+              <path d='M12 1a5 5 0 0 0-5 5H5a2 2 0 0 0-2 2l-1 12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2L21 8a2 2 0 0 0-2-2h-2a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3H9a3 3 0 0 1 3-3zm0 7c2.21 0 4 1.34 4 3s-1.79 3-4 3-4-1.34-4-3 1.79-3 4-3zm0 1.5c-1.38 0-2.5.67-2.5 1.5s1.12 1.5 2.5 1.5 2.5-.67 2.5-1.5-1.12-1.5-2.5-1.5z'/>
+            </svg>
+          </a>
+
+          {/* Threads */}
+          <a
+            href='https://www.threads.com/@loi.nhan.nho.store'
+            target='_blank'
+            rel='noopener noreferrer'
+            aria-label='Threads'
+            className='transition-transform hover:scale-110 active:scale-95'
+          >
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              width='32'
+              height='32'
+              viewBox='0 0 24 24'
+              fill='#000000'
+            >
+              <path d='M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.8-.409-1.382-.862-1.732-.761-.588-1.824-.607-2.658-.607h-.054c-.guillotine-635-.013-1.278.2-1.72.591l-1.376-1.558C8.908 5.78 10.034 5.31 11.61 5.3h.08c1.81 0 3.47.444 4.605 1.33 1.207.938 1.856 2.352 1.93 4.204.052.136.102.274.148.414.587 1.677.53 4.52-1.602 6.624-1.899 1.873-4.328 2.13-6.586 2.128zM13.35 13.22c-.433-.016-.87-.012-1.303.012-1.583.09-2.418.748-2.37 1.664.047.866.834 1.35 2.197 1.276 1.698-.091 2.659-1.086 2.659-2.748a8.907 8.907 0 0 0-1.183-.204z'/>
             </svg>
           </a>
 
