@@ -1,15 +1,17 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import './index.css';
 
 // ── Shopee products ─────────────────────────────────────────────────────────
-const PRODUCTS: { name: string; link: string }[] = [
+const PRODUCTS: { name: string; link: string; img: string }[] = [
   {
     name: 'MÓC KHOÁ LỜI NHẴN HANDMADE',
     link: 'https://s.shopee.vn/3B3GMOvO0f',
+    img: 'https://down-vn.img.susercontent.com/file/vn-11134207-81ztc-mmozw47gjzt1cd@resize_w450_nl.webp',
   },
   {
     name: 'LÒ NƯỚNG Xinh Mình Dùng',
     link: 'https://s.shopee.vn/Lj4zWtMKM',
+    img: 'https://down-vn.img.susercontent.com/file/vn-11134207-820l4-mivdthrk9khz73@resize_w450_nl.webp',
   },
 ];
 // ────────────────────────────────────────────────────────────────────────────
@@ -58,26 +60,15 @@ interface FormData {
   note: string;
 }
 
-function ProductCard({ name, link }: { name: string; link: string }) {
-  const [imgSrc, setImgSrc] = useState<string | null>(null);
-
-  useEffect(() => {
-    fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(link)}`)
-      .then((res) => res.json())
-      .then((data: { contents?: string }) => {
-        const html = data.contents ?? '';
-        const match =
-          html.match(
-            /<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i,
-          ) ??
-          html.match(
-            /<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:image["']/i,
-          );
-        if (match?.[1]) setImgSrc(match[1]);
-      })
-      .catch(() => {});
-  }, [link]);
-
+function ProductCard({
+  name,
+  link,
+  img,
+}: {
+  name: string;
+  link: string;
+  img: string;
+}) {
   return (
     <a
       href={link}
@@ -86,15 +77,8 @@ function ProductCard({ name, link }: { name: string; link: string }) {
       className='flex items-center rounded-2xl overflow-hidden border-2 border-dashed hover:shadow-lg transition-all active:scale-[0.98]'
       style={{ borderColor: '#f06292', background: 'white' }}
     >
-      <div
-        className='w-36 h-28 flex-shrink-0 flex items-center justify-center overflow-hidden'
-        style={{ background: '#fce4ec' }}
-      >
-        {imgSrc ? (
-          <img src={imgSrc} alt={name} className='w-full h-full object-cover' />
-        ) : (
-          <span className='text-4xl'>🛍️</span>
-        )}
+      <div className='w-36 h-28 flex-shrink-0 overflow-hidden'>
+        <img src={img} alt={name} className='w-full h-full object-cover' />
       </div>
       <div className='flex-1 px-4'>
         <p
@@ -299,7 +283,7 @@ export default function App() {
           </div>
           <div className='flex flex-col gap-4'>
             {PRODUCTS.map((p) => (
-              <ProductCard key={p.link} name={p.name} link={p.link} />
+              <ProductCard key={p.link} name={p.name} link={p.link} img={p.img} />
             ))}
           </div>
         </div>
